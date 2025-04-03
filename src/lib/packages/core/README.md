@@ -17,8 +17,8 @@ Inspired by [FullCalendar](https://fullcalendar.io/), implements similar options
     - [Pre-built browser ready bundle](#pre-built-browser-ready-bundle)
     - [Modifying options after initialization](#modifying-options-after-initialization)
 - [Options](#options)
-  <table>
-  <tr><td>
+    <table>
+    <tr><td>
 
     - [allDayContent](#alldaycontent)
     - [allDaySlot](#alldayslot)
@@ -49,7 +49,7 @@ Inspired by [FullCalendar](https://fullcalendar.io/), implements similar options
     - [eventDragStart](#eventdragstart)
     - [eventDragStop](#eventdragstop)
     - [eventDrop](#eventdrop)
-          </td><td>
+      </td><td>
 
     - [eventDurationEditable](#eventdurationeditable)
     - [eventLongPressDelay](#eventlongpressdelay)
@@ -80,7 +80,7 @@ Inspired by [FullCalendar](https://fullcalendar.io/), implements similar options
     - [moreLinkContent](#morelinkcontent)
     - [noEventsClick](#noeventsclick)
     - [noEventsContent](#noeventscontent)
-          </td><td>
+      </td><td>
 
     - [nowIndicator](#nowindicator)
     - [pointer](#pointer)
@@ -111,16 +111,16 @@ Inspired by [FullCalendar](https://fullcalendar.io/), implements similar options
     - [views](#views)
     - [weekNumberContent](#weeknumbercontent)
     - [weekNumbers](#weeknumbers)
-          </td></tr>
-          </table>
+      </td></tr>
+      </table>
 
 - [Methods](#methods)
-  <table>
-  <tr><td>
+    <table>
+    <tr><td>
 
     - [getOption](#getoption-name-)
     - [setOption](#setoption-name-value-)
-          </td><td>
+      </td><td>
 
     - [addEvent](#addevent-event-)
     - [getEventById](#geteventbyid-id-)
@@ -128,7 +128,7 @@ Inspired by [FullCalendar](https://fullcalendar.io/), implements similar options
     - [removeEventById](#removeeventbyid-id-)
     - [updateEvent](#updateevent-event-)
     - [refetchEvents](#refetchevents)
-          </td><td>
+      </td><td>
 
     - [dateFromPoint](#datefrompoint-x-y-)
     - [destroy](#destroy)
@@ -136,8 +136,8 @@ Inspired by [FullCalendar](https://fullcalendar.io/), implements similar options
     - [next](#next)
     - [prev](#prev)
     - [unselect](#unselect-1)
-          </td></tr>
-          </table>
+      </td></tr>
+      </table>
 
 - [Content](#content)
 - [Event object](#event-object)

@@ -29,7 +29,7 @@
         dates?: any;
     }
 
-    let { chunk,  longChunks = {}, inPopup = false, dates = [] }: Props = $props();
+    let { chunk, longChunks = {}, inPopup = false, dates = [] }: Props = $props();
 
     let {
         dayMaxEvents,
@@ -83,11 +83,12 @@
             let txtColor = event.textColor || resourceTextColor(event, $resources) || $eventTextColor;
 
             if (event.allDay) {
-	          txtColor = "#000000"
+                txtColor = "#000000";
             }
 
             if (bgEvent(display)) {
                 style = `width:calc(${chunk.days * 100}% + ${chunk.days - 1}px);`;
+                //style = `width:calc(${chunk.days * 100}% );`;
             } else {
                 let marginTop = margin;
                 if (event._margin) {
@@ -97,7 +98,34 @@
                         marginTop = _margin;
                     }
                 }
-                style = `width:calc(${chunk.days * 100}% + ${(chunk.days - 1) * 7}px);` + `margin-top:${marginTop}px;`;
+                if (event.allDay) {
+                  //console.log(chunk.event.title)
+                  //console.log(chunk.prev_week_continue)
+                  //console.log(chunk.next_week_continue)
+                  style = `width:calc(${chunk.days * 100}% + ${(chunk.days - 1) * 2}px);` + `margin-top:${marginTop}px;`;
+                  if ( !chunk.prev_week_continue ) {
+                     style += "   border-top-left-radius: 20px;"
+                     style += "   border-bottom-left-radius: 20px;"
+                  }
+                  if ( !chunk.next_week_continue ) {
+                     style += "   border-top-right-radius: 20px;"
+                     style += "   border-bottom-right-radius: 20px;"
+                  }
+                     style += " box-shadow: 0 4px 0 #808080; ";
+
+
+                } else {
+                  //style = `width:calc(${chunk.days * 100}% + ${(chunk.days - 1) * 7}px);` + `margin-top:${marginTop}px;`;
+                  if ( chunk.next_week_continue ) {
+                     style = `width:calc(${chunk.days * 100}% + ${(chunk.days - 1) * 7 + 7}px);` + `margin-top:${marginTop}px;`;
+                     style += "border-right:  thick double blue;"
+                  } else {
+                     style = `width:calc(${chunk.days * 100}% + ${(chunk.days - 1) * 7}px);` + `margin-top:${marginTop}px;`;
+                  }
+                  if ( chunk.prev_week_continue ) {
+                     style += "border-left:  thick double blue;"
+                  }
+                }
             }
             if (bgColor) {
                 style += `background-color:${bgColor};`;
@@ -105,16 +133,16 @@
             if (txtColor) {
                 style += `color:${txtColor};`;
             }
-
+/*
             if (event.allDay) {
-                style += "border-top: solid red;";
+                //style += "border-top: solid red;";
+                style += " box-shadow: 0 5px 0 #ca1c30; ";
             }
-
+*/
             if (hidden) {
                 style += "visibility:hidden;";
             }
             style += event.styles.join(";");
-
 
             classes = [
                 bgEvent(display) ? $theme.bgEvent : $theme.event,

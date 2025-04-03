@@ -1,4 +1,4 @@
-<script lang="ts".>
+<script lang="ts" .>
     import { stopPropagation, createBubbler } from "svelte/legacy";
     import { untrack } from "svelte";
 
@@ -25,7 +25,18 @@
     import Popup from "./Popup.svelte";
 
     //let { date, chunks, bgChunks, longChunks, iChunks = [], dates , allDaySlotHeight = 0 } = $props();
-    let { date, chunks, bgChunks, longChunks, iChunks = [], dates ,  week_array, bg_week_array, i,  allDaySlotHeight = 0} = $props();
+    let {
+        date,
+        chunks,
+        bgChunks,
+        longChunks,
+        iChunks = [],
+        dates,
+        week_array,
+        bg_week_array,
+        i,
+        allDaySlotHeight = 0,
+    } = $props();
     let index = i;
 
     // bgChunks   allDay task
@@ -64,7 +75,6 @@
     let weekNumber = $state();
     let refs = $state([]);
 
-
     function showMore() {
         $_popupDate = date;
     }
@@ -82,7 +92,7 @@
             runReposition(refs, dayChunks);
         }
     }
-/*
+    /*
     let style = $derived.by(() => {
         //let style = `height:calc(${chunk.days * 100}% + ${chunk.days - 1}px);`;
         //let style = `.allDaySlot { height:calc($bgChunks.length * 90)px)}`;
@@ -90,7 +100,7 @@
 	return style
 	})
 	*/
-    
+
     $effect(() => {
         disabled = outsideRange(date, $validRange);
     });
@@ -107,78 +117,74 @@
                 hiddenEvents = hiddenEvents;
 
                 for (let no of bg_week_array[index]) {
-                      //console.log(no)
-                      if (no == 0 || no == -1 ) {
-                           //console.log("skip")
-                           let chunk2 =  JSON.parse(JSON.stringify(bgChunks[0]));
-			    chunk2.event.title = "SPACE"
-			    chunk2.space = true;
-                            dayBgChunks.push(chunk2);
-                      } else if (no == -3 ) {
-                          break
-                      } else {
-                           //console.log("draw", no)
-                           let chunk = bgChunks[no-1]
-                           //console.log(chunk)
-			   chunk.space = false;
-                           dayBgChunks.push(chunk);
-                     }
-                 
-
-                }
- if (true) {               
-                for (let no of week_array[index]) {
-                      //console.log(no)
-                      if (no == 0 || no == -1 ) {
-                           //console.log("skip")
-                           let chunk2 =  JSON.parse(JSON.stringify(chunks[0]));
-			    chunk2.event.title = "SPACE"
-			    chunk2.space = true;
-                            dayChunks.push(chunk2);
-                      } else if (no == -3 ) {
-                          break
-                      } else {
-                           //console.log("draw", no)
-                           let chunk = chunks[no-1]
-                           //console.log(chunk)
-			   chunk.space = false;
-                           dayChunks.push(chunk);
-                     }
-                 
-
-                }
-} else {
-                for (let chunk of chunks) {
-                    if (datesEqual(chunk.date, date)) {
-                        //dayChunks.push(chunk);
-			//console.log(chunk)
-                        // if ($dayMaxEvents !== false && dayChunks.length > $dayMaxEvents) {
-                        // 	chunk.hidden = true;
-                        // }
-			//console.log(chunk.event.title)
-			chunk.space = false;
-			if (chunk.event.title == "END") {
-                 console.log(index, week_array[index])
-                //log("chunks",chunks)
-                //console.log("longChunks",longChunks)
-			    //let chunk2 = Object.assign({}, chunk);
-			    //let chunk2 = structuredClone( chunk);
-                            let chunk2 =  JSON.parse(JSON.stringify(chunk));
-			    chunk2.event.title = "SPACE"
-			    chunk2.space = true;
-                            dayChunks.push(chunk2);
-			}
-                        dayChunks.push(chunk);
+                    //console.log(no)
+                    if (no == 0 || no == -1) {
+                        //console.log("skip")
+                        let chunk2 = JSON.parse(JSON.stringify(bgChunks[0]));
+                        chunk2.event.title = "SPACE";
+                        chunk2.space = true;
+                        dayBgChunks.push(chunk2);
+                    } else if (no == -3) {
+                        break;
+                    } else {
+                        //console.log("draw", no)
+                        let chunk = bgChunks[no - 1];
+                        //console.log(chunk)
+                        chunk.space = false;
+                        dayBgChunks.push(chunk);
                     }
                 }
-}
-		//console.log(chunks.length, dayChunks.length)
+                if (true) {
+                    for (let no of week_array[index]) {
+                        //console.log(no)
+                        if (no == 0 || no == -1) {
+                            //console.log("skip")
+                            let chunk2 = JSON.parse(JSON.stringify(chunks[0]));
+                            chunk2.event.title = "SPACE";
+                            chunk2.space = true;
+                            dayChunks.push(chunk2);
+                        } else if (no == -3) {
+                            break;
+                        } else {
+                            //console.log("draw", no)
+                            let chunk = chunks[no - 1];
+                            //console.log(chunk)
+                            chunk.space = false;
+                            dayChunks.push(chunk);
+                        }
+                    }
+                } else {
+                    for (let chunk of chunks) {
+                        if (datesEqual(chunk.date, date)) {
+                            //dayChunks.push(chunk);
+                            //console.log(chunk)
+                            // if ($dayMaxEvents !== false && dayChunks.length > $dayMaxEvents) {
+                            // 	chunk.hidden = true;
+                            // }
+                            //console.log(chunk.event.title)
+                            chunk.space = false;
+                            if (chunk.event.title == "END") {
+                                console.log(index, week_array[index]);
+                                //log("chunks",chunks)
+                                //console.log("longChunks",longChunks)
+                                //let chunk2 = Object.assign({}, chunk);
+                                //let chunk2 = structuredClone( chunk);
+                                let chunk2 = JSON.parse(JSON.stringify(chunk));
+                                chunk2.event.title = "SPACE";
+                                chunk2.space = true;
+                                dayChunks.push(chunk2);
+                            }
+                            dayChunks.push(chunk);
+                        }
+                    }
+                }
+                //console.log(chunks.length, dayChunks.length)
                 //dayChunks.push({display:false,dumy:true});
             }
         });
     });
 
-/*
+    /*
     $effect(() => {
         untrack(() => {
             if (!disabled) {
@@ -264,13 +270,6 @@
     });
 </script>
 
-
-<style>
-      .allDaySlot { height:var(--allDaySlotHeight)}
-</style>
-
-
-
 <div
     bind:this={el}
     class="{$theme.day} {$theme.weekdays?.[date.getUTCDay()]}{isToday ? ' ' + $theme.today : ''}{otherMonth
@@ -286,7 +285,7 @@
             <span class={$theme.weekNumber} use:setContent={weekNumber}></span>
         {/if}
     </div>
-<!--
+    <!--
     <div class="{$theme.bgEvents} allDaySlot" >
         {#if !disabled}
             {#each dayBgChunks as chunk (chunk.event)}
@@ -299,16 +298,16 @@
         {/if}
     </div>
 -->
-    <div class="[{$theme.bgEvents} allDaySlot" >
+    <div class="[{$theme.bgEvents} allDaySlot">
         {#if !disabled}
             {#each dayBgChunks as chunk, i (chunk.event)}
-<!--
+                <!--
                 <Event {chunk}  {dates} bind:this={refs[i]} />
 -->
-	        {#if !chunk.space }
-                     <Event {chunk}  {dates} bind:this={refs[i]} />
+                {#if !chunk.space}
+                    <Event {chunk} {dates} bind:this={refs[i]} />
                 {:else}
-		    <EventSpace/>
+                    <EventSpace />
                 {/if}
             {/each}
         {/if}
@@ -328,25 +327,24 @@
             </div>
         {/if}
     {/if}
-  
+
     <div class={$theme.events}>
         {#if !disabled}
             {#each dayChunks as chunk, i (chunk.event)}
-	    <!--
+                <!--
                 <Event {chunk} {longChunks} {dates} bind:this={refs[i]} />
                 <Event {chunk} null {dates} bind:this={refs[i]} />
                 <Event {chunk} {longChunks} {dates} bind:this={refs[i]} />
 	    -->
-	        {#if !chunk.space }
-                     <Event {chunk} {longChunks} {dates} bind:this={refs[i]} />
+                {#if !chunk.space}
+                    <Event {chunk} {longChunks} {dates} bind:this={refs[i]} />
                 {:else}
-		    <EventSpace/>
+                    <EventSpace />
                 {/if}
             {/each}
         {/if}
     </div>
-   
-    
+
     {#if showPopup}
         <Popup />
     {/if}
@@ -367,3 +365,9 @@
         {/if}
     </div>
 </div>
+
+<style>
+    .allDaySlot {
+        height: var(--allDaySlotHeight);
+    }
+</style>

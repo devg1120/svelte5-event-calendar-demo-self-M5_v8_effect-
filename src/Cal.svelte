@@ -11,7 +11,7 @@
     //let plugins = [TimeGrid, DayGrid,  ResourceTimeGrid, ResourceTimeline, Interaction];
     let options: Calendar.Options = $state({
         //let options: Calendar.Options = {
-        view: 'dayGridMonth',
+        view: "dayGridMonth",
         //view: "timeGridWeek",
         //view: 'timeGridDay',
         headerToolbar: {
@@ -85,7 +85,7 @@
         }
 
         return [
-/*
+            /*
 
             {
                 start: days[-7] + " 10:00",
@@ -153,7 +153,7 @@
                 color: "#00BFFF	",
             },
 */
-/*
+            /*
             { start: days[0] + " 00:00", end: days[0] + " 09:00", resourceId: 1, display: "background" },
             { start: days[1] + " 12:00", end: days[1] + " 14:00", resourceId: 2, display: "background" },
             { start: days[2] + " 17:00", end: days[2] + " 24:00", resourceId: 1, display: "background" },
@@ -238,7 +238,7 @@
                 title: "LAST",
                 color: "red",
             },
-/*
+            /*
             {
                 start: days[5] + " 14:00",
                 end: days[5] + " 19:00",
@@ -254,7 +254,7 @@
                 start: days[0] + " 10:00",
                 end: days[0] + " 10:00",
                 resourceId: 1,
-                title: "All-day events can be displayed at the top",
+                title: "All-day 1",
                 color: "#B29DD9",
                 allDay: true,
             },
@@ -262,7 +262,7 @@
                 start: days[1] + " 10:00",
                 end: days[4] + " 10:00",
                 resourceId: 1,
-                title: "All-day events can be displayed at the top",
+                title: "All-day 2",
                 color: "#B29DD9",
                 allDay: true,
             },
@@ -270,19 +270,18 @@
                 start: days[3] + " 10:00",
                 end: days[4] + " 10:00",
                 resourceId: 1,
-                title: "All-day events can be displayed at the top",
+                title: "All-day 3",
                 color: "#ff9999",
                 allDay: true,
             },
             {
                 start: days[4] + " 10:00",
-                end: days[6] + " 10:00",
+                end: days[8] + " 10:00",
                 resourceId: 1,
-                title: "All-day events can be displayed at the top",
+                title: "All-day 4",
                 color: "#66ffff",
                 allDay: true,
             },
-
         ];
     }
 
