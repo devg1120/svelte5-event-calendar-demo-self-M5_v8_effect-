@@ -43,7 +43,9 @@
         height: 0;
     }
 
-    .ec-time,
+    .ec-time {
+        height: 24px;
+    }
     .ec-line {
         height: 24px;
     }
@@ -59,6 +61,8 @@
         border-bottom: 1px solid var(--ec-border-color);
         pointer-events: none;
     }
+
+
 
     .ec-body:not(.ec-compact) .ec-line:nth-child(even):after {
         border-bottom-style: dotted;
