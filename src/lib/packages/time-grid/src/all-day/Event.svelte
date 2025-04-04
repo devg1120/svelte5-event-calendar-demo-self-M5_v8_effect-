@@ -80,8 +80,19 @@
                 style = `width:calc(${chunk.days * 100}% + ${chunk.days - 1}px);`;
             } else {
                 style =
-                    `width:calc(${chunk.days * 100}% + ${(chunk.days - 1) * 7}px);` +
+                    `width:calc(${chunk.days * 100}% + ${(chunk.days - 1) * 7 + 6}px);` +
                     `margin-top:${event._margin ?? margin}px;`;
+
+
+                  if ( !chunk.prev_week_continue ) {
+                     style += "   border-top-left-radius: 20px;"
+                     style += "   border-bottom-left-radius: 20px;"
+                  }
+                  if ( !chunk.next_week_continue ) {
+                     style += "   border-top-right-radius: 20px;"
+                     style += "   border-bottom-right-radius: 20px;"
+                  }
+                     style += " box-shadow: 0 4px 0 #808080; ";
             }
             if (bgColor) {
                 style += `background-color:${bgColor};`;

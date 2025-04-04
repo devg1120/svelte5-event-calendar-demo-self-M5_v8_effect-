@@ -31,6 +31,15 @@
         for (let event of $_events) {
             if (event.allDay && eventIntersects(event, start, end, resourceFilter)) {
                 let chunk = createEventChunk(event, start, end);
+                chunk.prev_week_continue = false;
+                chunk.next_week_continue = false;
+                if (event.start  < start ) {
+                      chunk.prev_week_continue = true;
+                }
+
+                if (event.end  > end ) {
+                      chunk.next_week_continue = true;
+                }
                 if (bgEvent(event.display)) {
                     bgChunks.push(chunk);
                 } else {
